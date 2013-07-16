@@ -1,0 +1,36 @@
+
+#!/usr/bin/env node
+
+// 100 prime numbers
+
+// function prime numbers
+
+function listPrimes(e
+
+ax ) {
+    var primes = [];
+    var filter = new Array( max );
+    for( var i = 0;  i < max;  i++ ) {
+        filter[i] = true;
+    }
+    for( var p = 2;  p < max;  p++ ) {
+        if( filter[p] ) {
+            primes.push( p );
+            for( var t = p * 2;  t < max;  t += p ) {
+                filter[t] = false;
+            }
+        }
+    }
+    return primes;
+};
+
+var fmt = function(primes) {return primes.join(",");};
+var k = 542;
+console.log(fmt(listPrimes(k)));
+
+//priting into file
+
+var fs = require('fs')
+var out = fmt(listPrimes(k));
+fs.writeFile ("prime_numbers.txt", out);
+
